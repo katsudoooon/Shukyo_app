@@ -1,0 +1,17 @@
+<div>
+    <p><%= @article.title %></p>
+    <p><%= @article.content %></p>
+</div>
+
+<div>
+    <p>コメント件数：<%= @article.post_comments.count %></p>
+    <% @artilce.post_comments.each do |comment| %>
+        <p><%= post_comment.customer.name %></p>
+    <% end %>
+</div>
+
+<div>
+    <%= form_with model:[@artilce, @post_comment], local: true do |f| %>
+        <%= f.text.area :comment, rows:'5',placeholder: "コメントをここに" %>
+    <% end %>
+</div>
