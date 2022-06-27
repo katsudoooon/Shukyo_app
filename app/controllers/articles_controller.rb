@@ -7,7 +7,7 @@ class ArticlesController < ApplicationController
     
     def create
         @article = Article.new(article_params)
-        @article.custommer_id = current_user.id
+        @article.customer_id = current_customer.id
         @article.save
         redirect_to articles_path
         
@@ -22,6 +22,8 @@ class ArticlesController < ApplicationController
         @article = Article.find(params[:id])
         @post_comment = PostComment.new
         @post_comments = PostComment.all
+        @article_content = Article.new
+        @article_contents = Article.all
         
     end
     

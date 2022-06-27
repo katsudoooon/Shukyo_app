@@ -1,17 +1,24 @@
 <div>
     <p><%= @article.title %></p>
-    <p><%= @article.content %></p>
+    <% @article.article_content.each do |article_content| %>
+        <p><%= article_content.content %></p>
+    <% end %>
+    <%= form_with model:[@article, @article_content], local: true do |f| %>
+        <%= f.text_field :content %>
+        <%= f.submit '決定' %>
+    <% end %>
 </div>
 
 <div>
     <p>コメント件数：<%= @article.post_comments.count %></p>
-    <% @artilce.post_comments.each do |comment| %>
+    <% @article.post_comments.each do |comment| %>
         <p><%= post_comment.customer.name %></p>
     <% end %>
 </div>
 
 <div>
-    <%= form_with model:[@artilce, @post_comment], local: true do |f| %>
-        <%= f.text.area :comment, rows:'5',placeholder: "コメントをここに" %>
+    <%= form_with model:[@article, @post_comment], local: true do |f| %>
+        <%= f.text_field :comment %>
+        <%= f.submit '投稿' %>
     <% end %>
 </div>
