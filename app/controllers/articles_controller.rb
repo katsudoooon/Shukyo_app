@@ -22,8 +22,8 @@ class ArticlesController < ApplicationController
         @article = Article.find(params[:id])
         @post_comment = PostComment.new
         @post_comments = PostComment.all
-        @article_content = Article.new
-        @article_contents = Article.all
+        @article_content = ArticleContent.new
+        @article_contents = ArticleContent.all
         
     end
     

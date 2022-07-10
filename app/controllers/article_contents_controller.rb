@@ -2,7 +2,8 @@ class ArticleContentsController < ApplicationController
     
     def create
         article = Article.find(params[:article_id])
-        content = current_user.article_content.new(article_content_params)
+        content = ArticleContent.new(article_content_params)
+        content.customer_id = current_customer.id
         content.article_id = article.id
         content.save
         redirect_to article_path(article)
@@ -15,7 +16,7 @@ class ArticleContentsController < ApplicationController
     
     private
     def article_content_params
-       params.require(article_content).permit(:content) 
+       params.require(:article_content).permit(:content) 
     end
     
 end
