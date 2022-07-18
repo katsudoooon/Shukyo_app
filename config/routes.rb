@@ -9,5 +9,6 @@ Rails.application.routes.draw do
     resources :post_comments, only: [:index, :create, :destroy]
     resources :article_contents, only: [:create, :destroy]
   end
+  resources :customers
   
 end
